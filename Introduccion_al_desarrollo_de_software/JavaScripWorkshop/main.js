@@ -11,9 +11,9 @@
     // Board prototype.
     self.Board.prototype = {
         get elements(){
-            var elements = this.bars;
-            elements.push(this.ball);
-            return elements;
+			var elements = this.bars.map(function (bar) { return bar; });
+			elements.push(this.ball);
+			return elements;
         }
     }
 })();
@@ -42,7 +42,20 @@
         }
     }
 })();
+// Anonymous function to initialize the ball.
+(function(){
+    self.Ball = function(x, y, radius, board){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.speedY = 0;
+        this.speedX = 3;
+        this.board = board;
 
+        board.ball = this;
+        this.kind = "circle";
+    }
+})();
 
 // Anonymous function to initialize the board.
 (function(){
@@ -55,44 +68,69 @@
     }
 
     self.BoardView.prototype = {
+        clean: function(){
+            this.context.clearRect(0, 0, this.board.width, this.board.height);
+        },
         draw: function(){
             for(var i = this.board.elements.length -1; i >= 0; i--){
                 var el = this.board.elements[i];
+
                 draw(this.context, el);
             }
+        },
+        play: function(){
+            board_view.clean();
+            board_view.draw();
         }
     }
 
     //Helper method.
     function draw(context, element){
-        if(element !== null && element.hasOwnProperty("kind")){
-            switch(element.kind){
-                case "rectangle":
-                    context.fillRect(element.x, element.y, element.width, element.height);
-                    break;
-            }
+        switch(element.kind){
+            case "rectangle":
+                context.fillRect(element.x, element.y, element.width, element.height);
+                break;
+            case "circle":
+                context.beginPath();
+                context.arc(element.x, element.y, element.radius, 0, 7);
+                context.fill();
+                context.closePath();
+                break;
         }
-
     }
 })();
 
 var board = new Board(800, 400);
-var bar = new Bar(20, 100, 40, 100, board);
-var bar = new Bar(700, 100, 40, 100, board);
+var left_bar = new Bar(20, 130, 25, 100, board);
+var right_bar = new Bar(755, 130, 25, 100, board);
 var canvas = document.getElementById("canvas");
 var board_view = new BoardView(canvas, board);
+var ball = new Ball(400, 200, 8, board);
 
 document.addEventListener("keydown", function(ev){
+    event.preventDefault();
     if(ev.keyCode == 38){
-        bar.up();
-    }else if(ev.keyCode = 40){
-        bar.down();
+        if (right_bar.y >= 10){
+            right_bar.up();
+        }
+    }else if(ev.keyCode == 40){
+        if (right_bar.y <= 290){
+            right_bar.down();
+        }
+    }else if(ev.keyCode == 87){
+        if (left_bar.y >= 10){
+            left_bar.up();
+        }
+    }else if(ev.keyCode == 83){
+        if (left_bar.y <= 290){
+            left_bar.down();
+        }
     }
-    console.log(bar.toString());
 });
 
-window.addEventListener("load", main);
+window.requestAnimationFrame(controller);
 
-function main(){
-    board_view.draw();
+function controller(){
+    board_view.play();
+    window.requestAnimationFrame(controller);
 }
