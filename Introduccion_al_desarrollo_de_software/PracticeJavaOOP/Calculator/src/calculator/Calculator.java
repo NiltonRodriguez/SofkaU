@@ -5,7 +5,6 @@
  */
 package calculator;
 
-import calculator.entity.Addition;
 import calculator.entity.Calc;
 
 /**
