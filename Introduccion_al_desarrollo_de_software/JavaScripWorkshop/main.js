@@ -50,9 +50,14 @@
         this.y = y;
         this.radius = radius;
         this.speedX = 3;
-        this.speedY = 0;
+        this.speedY = Math.random();
         this.board = board;
         this.direction = 1;
+        this.bounce_angle = 0;
+        this.max_bounce_angle = Math.PI / 12;
+        this.speed = 3;
+        this.width = this.radius * 2;
+        this.height = this.radius * 2;
 
         board.ball = this;
         this.kind = "circle";
@@ -61,7 +66,43 @@
     self.Ball.prototype = {
         move: function(){
             this.x += (this.speedX * this.direction);
-            this.y += this.speedY;
+            this.y += (this.speedY);
+
+            // Collition with left border. Restart position.
+            if (this.x <= 10) {
+				this.x = 400;
+				this.y = 200;
+				this.speedX = -this.speedX;
+				this.bounce_angle = -this.bounce_angle;
+			}
+            // Collition with right border. Restart position.
+			if (this.x >= 790) {
+				this.x = 400;
+				this.y = 200;
+				this.speedX = -this.speedX;
+				this.bounce_angle = -this.bounce_angle;
+			}
+            // Collition with top border.
+			if (this.y <= 10) {
+				this.speedY = -this.speedY;
+				this.bounce_angle = -this.bounce_angle;
+			}
+            // Collition with bottom border
+            if (this.y >= 390) {
+                this.speedY = -this.speedY;
+				this.bounce_angle = -this.bounce_angle;
+			}
+        },
+        collision: function(bar){
+            var relative_intersect_y = (bar.y + (bar.height / 2)) - this.y;
+
+			var normalized_intersect_y = relative_intersect_y / (bar.height / 2);
+
+			this.bounce_angle = normalized_intersect_y * this.max_bounce_angle;
+			this.speed_y = this.speed * -Math.sin(this.bounce_angle);
+			this.speed_x = this.speed * Math.cos(this.bounce_angle);
+			if (this.x > (this.board.width / 2)) this.direction = -1;
+			else this.direction = 1;
         }
     }
 })();
@@ -87,16 +128,46 @@
                 draw(this.context, el);
             }
         },
+        check_collisions: function() {
+			for (var i = this.board.bars.length - 1; i >= 0; i--) {
+				var bar = this.board.bars[i];
+				if (hit(bar, this.board.ball)) {
+					this.board.ball.collision(bar);
+				}
+			}
+		},
         play: function(){
             if (this.board.playing){
                 board_view.clean();
                 board_view.draw();
+                board_view.check_collisions();
                 this.board.ball.move();
             }
         }
     }
 
     //Helper method.
+    function hit(a, b){
+        var hit = false;
+        // Horizontal Collitions
+        if (b.x + b.width >= a.x && b.x < a.x + a.width) {
+            //vertical collitions
+            if (b.y + b.height >= a.y && b.y < a.y + a.height)
+                hit = true;
+        }
+        // a collides b.
+        if (b.x <= a.x && b.x + b.width >= a.x + a.width) {
+            if (b.y <= a.y && b.y + b.height >= a.y + a.height)
+                hit = true;
+        }
+        // b collides a.
+        if (a.x <= b.x && a.x + a.width >= b.x + b.width) {
+            if (a.y <= b.y && a.y + a.height >= b.y + b.height)
+                hit = true;
+        }
+        return hit;
+    }
+
     function draw(context, element){
         switch(element.kind){
             case "rectangle":
