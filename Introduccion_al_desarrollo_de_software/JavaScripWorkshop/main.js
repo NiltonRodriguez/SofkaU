@@ -93,6 +93,7 @@
 				this.bounce_angle = -this.bounce_angle;
 			}
         },
+        // Function to set the collition s
         collision: function(bar){
             var relative_intersect_y = (bar.y + (bar.height / 2)) - this.y;
 
@@ -118,9 +119,11 @@
     }
 
     self.BoardView.prototype = {
+        // Function clear the paddle animations.
         clean: function(){
             this.context.clearRect(0, 0, this.board.width, this.board.height);
         },
+        // Function to render the paddles and the ball.
         draw: function(){
             for(var i = this.board.elements.length -1; i >= 0; i--){
                 var el = this.board.elements[i];
@@ -128,6 +131,7 @@
                 draw(this.context, el);
             }
         },
+        // Function to chec the collisions between the ball and the paddles.
         check_collisions: function() {
 			for (var i = this.board.bars.length - 1; i >= 0; i--) {
 				var bar = this.board.bars[i];
@@ -136,6 +140,7 @@
 				}
 			}
 		},
+        //Function to update the game over time.
         play: function(){
             if (this.board.playing){
                 board_view.clean();
@@ -146,7 +151,9 @@
         }
     }
 
-    //Helper method.
+    //Helper methods.
+
+    // Method to check if the ball hits other element.
     function hit(a, b){
         var hit = false;
         // Horizontal Collitions
@@ -167,7 +174,7 @@
         }
         return hit;
     }
-
+    // Function to render the elements in the canvas.
     function draw(context, element){
         switch(element.kind){
             case "rectangle":
@@ -190,6 +197,7 @@ var canvas = document.getElementById("canvas");
 var board_view = new BoardView(canvas, board);
 var ball = new Ball(400, 200, 8, board);
 
+// Listener to move the paddles and pause the game with keys.
 document.addEventListener("keydown", function(ev){
     if(ev.keyCode === 38){
         event.preventDefault();
@@ -217,9 +225,11 @@ document.addEventListener("keydown", function(ev){
     }
 });
 
+// Display the board and animations.
 board_view.draw();
 window.requestAnimationFrame(controller);
 
+// Main function that render and control the game.
 function controller(){
     board_view.play();
     window.requestAnimationFrame(controller);
