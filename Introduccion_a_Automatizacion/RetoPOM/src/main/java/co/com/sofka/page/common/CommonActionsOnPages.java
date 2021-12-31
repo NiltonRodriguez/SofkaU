@@ -33,12 +33,16 @@ public class CommonActionsOnPages {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    protected void waitText(By locator, String destination){
-        wait.until(ExpectedConditions.textToBe(locator, getText(locator)));
+    protected void waitText(By locator, String text){
+        wait.until(ExpectedConditions.textToBe(locator, text));
     }
 
     protected void pressEnter(By locator) {
         driver.findElement(locator).sendKeys(Keys.ENTER);
+    }
+
+    protected void pressRightArrow(By locator){
+        driver.findElement(locator).sendKeys(Keys.ARROW_RIGHT);
     }
 
     public void scrollTo(By locator){
@@ -48,10 +52,5 @@ public class CommonActionsOnPages {
 
     protected  String getText (By locator){
         return driver.findElement(locator).getText();
-    }
-
-    protected void scrollDown(){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,1000)");
     }
 }

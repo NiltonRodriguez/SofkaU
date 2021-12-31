@@ -7,6 +7,8 @@ import co.com.sofka.util.MonthSpecs;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import static co.com.sofka.util.MonthSpecs.*;
 import static co.com.sofka.util.MonthSpecs.DEC_DAYS;
 
@@ -25,6 +27,7 @@ public class DespegarSearchModel {
     private String adults;
     private String children;
     private ClassType classType;
+    private List<String> prices;
 
     public void setMonthInfo(MonthSpecs month, MonthInfo monthToSet){
         switch(month) {
