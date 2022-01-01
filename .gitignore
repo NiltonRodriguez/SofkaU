@@ -26,34 +26,34 @@ hs_err_pid*
 
 # Gradle
 */.gradle
-*/RetoPageFactory/.gradle
-*/RetoPOM/.gradle
-*/RetoRestAssured/.gradle
+*/RetoPageFactory/RetoPageFactory/.gradle
+*/RetoPOM/RetoPOM/.gradle
+*/RetoRestAssured/RetoRestAssured/.gradle
 
 #Intellij
 */.idea/
-*/RetoPageFactory/.idea/
-*/RetoPOM/.idea/
-*/RetoRestAssured/.idea
+*/RetoPageFactory/RetoPageFactory/.idea/
+*/RetoPOM/RetoPOM/.idea/
+*/RetoRestAssured/RetoRestAssured/.idea
 
 #Java
 */build/
-*/RetoPageFactory/build/
-*/RetoPOM/build/
-*/RetoRestAssured/build/
+*/RetoPageFactory/RetoPageFactory/build/
+*/RetoPOM/RetoPOM/build/
+*/RetoRestAssured/RetoRestAssured/build/
 
 */out/
-*/RetoPageFactory/out/
-*/RetoPOM/out/
-*/RetoRestAssured/out/
+*/RetoPageFactory/RetoPageFactory/out/
+*/RetoPOM/RetoPOM/out/
+*/RetoRestAssured/RetoRestAssured/out/
 
 */history/
-*/RetoPageFactory/history/
-*/RetoPOM/history/
-*/RetoRestAssured/history/
+*/RetoPageFactory/RetoPageFactory/history/
+*/RetoPOM/RetoPOM/history/
+*/RetoRestAssured/RetoRestAssured/history/
 
 #Serenity
 */target/
-*/RetoPageFactory/target/
-*/RetoPOM/target/
-*/RetoRestAssured/target/
+*/RetoPageFactory/RetoPageFactory/target/
+*/RetoPOM/RetoPOM/target/
+*/RetoRestAssured/RetoRestAssured/target/
