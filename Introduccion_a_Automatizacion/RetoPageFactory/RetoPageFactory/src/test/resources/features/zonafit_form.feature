@@ -1,4 +1,4 @@
-Feature: Order
+Feature: Order Products
   As
     a client
   I WANT TO
