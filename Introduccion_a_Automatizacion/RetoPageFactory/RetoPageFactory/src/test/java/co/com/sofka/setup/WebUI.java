@@ -5,15 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static co.com.sofka.util.Log4jValues.LOG4J_PROPERTIES_FILE_PATH;
-import static co.com.sofka.util.Utilities.defineOS;
-import static co.com.sofka.util.Utilities.getUserDir;
+import static co.com.sofka.util.Utilities.*;
 
 public class WebUI {
     private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
     private static final String WEBDRIVER_CHROME_DRIVER_PATH_MAC = "src/test/resources/drivers/macOS/chrome/chromedriver";
-    private static final String WEBDRIVER_CHROME_DRIVER_PATH_WINDOWS = "src/test/resources/drivers/macOS/chrome/chromedriver.exe";
+    private static final String WEBDRIVER_CHROME_DRIVER_PATH_WINDOWS = "src/test/resources/drivers/windows/chrome/chromedriver.exe";
 
-    private static final String DESPEGAR_URL = "https://www.despegar.com.co/";
+    private static final String DESPEGAR_URL = "https://www.zonafit.co/";
 
     protected WebDriver driver;
 
@@ -31,13 +30,18 @@ public class WebUI {
     }
 
     private void setUpLog4j(){
-        PropertyConfigurator.configure(getUserDir() + LOG4J_PROPERTIES_FILE_PATH.getValue());
+        PropertyConfigurator.configure(osPathModify(defineOS(),getUserDir() + LOG4J_PROPERTIES_FILE_PATH.getValue()));
     }
 
-    protected void generalSetUp(){
+    protected void generalSetup(){
         setUpLog4j();
         setUpWebdriver();
         setUpWebdriverURL();
+        maximizeWindow();
+    }
+
+    private void maximizeWindow(){
+        driver.manage().window().maximize();
     }
 
     protected void quitDriver(){

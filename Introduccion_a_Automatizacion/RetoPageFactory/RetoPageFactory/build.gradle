@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 plugins {
     id 'java'
 }
@@ -23,6 +25,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
     implementation 'org.apache.logging.log4j:log4j-core:2.17.0'
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    implementation 'org.projectlombok:lombok:1.18.22'
 
 }
 
