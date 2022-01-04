@@ -11,7 +11,7 @@ import static co.com.sofka.util.Utilities.*;
 
 public class TempConvertSetup {
     public static final String BASE_URL = "https://www.w3schools.com/";
-    public static final String RESOURCE = "xml/tempconvert.asmx?op=CelsiusToFahrenheit";
+    public static final String RESOURCE = "xml/tempconvert.asmx?wsdl";//?op=CelsiusToFahrenheit
     protected final Actor actor = new Actor("Iván");
 
     protected void setup(){

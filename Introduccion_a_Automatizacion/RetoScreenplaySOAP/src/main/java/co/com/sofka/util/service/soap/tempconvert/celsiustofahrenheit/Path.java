@@ -4,7 +4,7 @@ import static co.com.sofka.util.Utilities.*;
 
 public enum Path {
     CELSIUSTOFAHRENHEIT(osPathModify(defineOS(),getUserDir() +
-            "/src/test/resources/files/services/tempconvert/celsiustofahrenheit/convertion.xml"));
+            "/src/test/resources/files/services/soap/tempconvert/celsiustofahrenheit/convertion.xml"));
 
     private final String value;
 
