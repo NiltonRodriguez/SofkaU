@@ -60,8 +60,8 @@ public class SearchCapitalStepDefinition extends CountryInfoSetup {
                         .andTheBodyRequest(bodyRequest())
         );
     }
-    @Then("the user obtains the the message {string}")
-    public void theUserObtainsTheTheMessage(String message) {
+    @Then("the user obtains the message {string}")
+    public void theUserObtainsTheMessage(String message) {
         capitalCity.setCapitalCity(message);
         actor.should(
                 seeThatResponse("El código de respuesta HTTP debe ser: ",

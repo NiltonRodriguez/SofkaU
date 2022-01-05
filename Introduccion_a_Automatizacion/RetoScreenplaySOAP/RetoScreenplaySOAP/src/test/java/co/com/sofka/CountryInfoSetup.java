@@ -11,7 +11,7 @@ import static co.com.sofka.util.Utilities.*;
 
 public class CountryInfoSetup {
     public static final String BASE_URL = "http://webservices.oorsprong.org/";
-    public static final String RESOURCE = "websamples.countryinfo/CountryInfoService.wso?op=CapitalCity";
+    public static final String RESOURCE = "websamples.countryinfo/CountryInfoService.wso?wsdl";//op=CapitalCity
     protected final Actor actor = new Actor("Iván");
 
     protected void setup(){

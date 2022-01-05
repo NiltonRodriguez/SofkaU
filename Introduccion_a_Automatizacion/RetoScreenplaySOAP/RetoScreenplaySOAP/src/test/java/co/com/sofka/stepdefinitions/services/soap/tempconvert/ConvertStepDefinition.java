@@ -48,8 +48,8 @@ public class ConvertStepDefinition extends TempConvertSetup {
     }
 
     // Second Scenario.
-    @Given("a user od the converter that set {string} as Celsius")
-    public void aUserOdTheConverterThatSetAsCelsius(String wrongTemp) {
+    @Given("a user of the converter that set {string} as Celsius")
+    public void aUserOfTheConverterThatSetAsCelsius(String wrongTemp) {
         super.setup();
         convertion = new Convertion();
         convertion.setTemperature(wrongTemp);

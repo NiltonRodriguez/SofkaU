@@ -15,4 +15,4 @@ Feature: Search the capital city of a country
 
   Scenario: Consult the capital city of a country that doesn't exist
     When the user send the ISO code "CQ" that doesn't exists
-    Then the user obtains the the message "Country not found in the database"
+    Then the user obtains the message "Country not found in the database"
