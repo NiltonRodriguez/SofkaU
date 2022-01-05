@@ -6,6 +6,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.http.HttpStatus;
+import org.apache.log4j.Logger;
+import org.junit.jupiter.api.Assertions;
 
 import static co.com.sofka.questions.ReturnSoapServiceResponse.returnSoapServiceResponse;
 import static co.com.sofka.tasks.DoPost.doPost;
@@ -17,62 +19,93 @@ import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeT
 import static org.hamcrest.CoreMatchers.containsString;
 
 public class ConvertStepDefinition extends TempConvertSetup {
+    private static final Logger LOGGER = Logger.getLogger(ConvertStepDefinition.class);
     private Convertion convertion;
 
     // First Scenario.
     @Given("a user of the converter that wants to convert {string} Celsius")
     public void aUserOfTheConverterThatWantsToConvertCelsius(String temperature) {
-        super.setup();
-        convertion = new Convertion();
-        convertion.setTemperature(temperature);
+        try {
+            super.setup();
+            convertion = new Convertion();
+            convertion.setTemperature(temperature);
+        } catch (Exception e){
+            Assertions.fail(e.getMessage());
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
     @When("the user executes the converter to Fahrenheit")
     public void theUserExecutesTheConverterToFahrenheit() {
-        actor.attemptsTo(
-                doPost()
-                        .withTheResource(RESOURCE)
-                        .andTheHeaders(super.headers())
-                        .andTheBodyRequest(bodyRequest())
-        );
+        try {
+            actor.attemptsTo(
+                    doPost()
+                            .withTheResource(RESOURCE)
+                            .andTheHeaders(super.headers())
+                            .andTheBodyRequest(bodyRequest())
+            );
+        } catch (Exception e){
+            Assertions.fail(e.getMessage());
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
     @Then("the user obtains the result {string}")
     public void theUserObtainsTheResult(String result) {
-        convertion.setResult(result);
-        actor.should(
-                seeThatResponse("El código de respuesta HTTP debe ser: ",
-                        response -> response.statusCode(HttpStatus.SC_OK)),
-                seeThat("El resultado de la conversión debe ser: ",
-                        returnSoapServiceResponse(),
-                        containsString(bodyResponse()))
-        );
+        try {
+            convertion.setResult(result);
+            actor.should(
+                    seeThatResponse("El código de respuesta HTTP debe ser: ",
+                            response -> response.statusCode(HttpStatus.SC_OK)),
+                    seeThat("El resultado de la conversión debe ser: ",
+                            returnSoapServiceResponse(),
+                            containsString(bodyResponse()))
+            );
+        } catch (Exception e){
+            Assertions.fail(e.getMessage());
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
 
     // Second Scenario.
     @Given("a user of the converter that set {string} as Celsius")
     public void aUserOfTheConverterThatSetAsCelsius(String wrongTemp) {
-        super.setup();
-        convertion = new Convertion();
-        convertion.setTemperature(wrongTemp);
+        try {
+            super.setup();
+            convertion = new Convertion();
+            convertion.setTemperature(wrongTemp);
+        } catch (Exception e){
+            Assertions.fail(e.getMessage());
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
     @When("the user attempt to convert it to Fahrenheit")
     public void theUserAttemptToConvertItToFahrenheit() {
-        actor.attemptsTo(
-                doPost()
-                        .withTheResource(RESOURCE)
-                        .andTheHeaders(super.headers())
-                        .andTheBodyRequest(bodyRequest())
-        );
+        try {
+            actor.attemptsTo(
+                    doPost()
+                            .withTheResource(RESOURCE)
+                            .andTheHeaders(super.headers())
+                            .andTheBodyRequest(bodyRequest())
+            );
+        } catch (Exception e){
+            Assertions.fail(e.getMessage());
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
     @Then("the user obtains the message {string}")
     public void theUserObtainsTheMessage(String message) {
-        convertion.setResult(message);
-        actor.should(
-                seeThatResponse("El código de respuesta HTTP debe ser: ",
-                        response -> response.statusCode(HttpStatus.SC_OK)),
-                seeThat("El mensaje de la conversión debe ser: ",
-                        returnSoapServiceResponse(),
-                        containsString(bodyResponse()))
-        );
+        try {
+            convertion.setResult(message);
+            actor.should(
+                    seeThatResponse("El código de respuesta HTTP debe ser: ",
+                            response -> response.statusCode(HttpStatus.SC_OK)),
+                    seeThat("El mensaje de la conversión debe ser: ",
+                            returnSoapServiceResponse(),
+                            containsString(bodyResponse()))
+            );
+        } catch (Exception e){
+            Assertions.fail(e.getMessage());
+            LOGGER.warn(e.getMessage(), e);
+        }
     }
 
     private Convertion convertion(){
