@@ -53,7 +53,7 @@ public class ConvertStepDefinition extends TempConvertSetup {
         try {
             convertion.setResult(result);
             actor.should(
-                    seeThatResponse("El código de respuesta HTTP debe ser: ",
+                    seeThatResponse("El código de respuesta HTTP debe ser: " + HttpStatus.SC_OK,
                             response -> response.statusCode(HttpStatus.SC_OK)),
                     seeThat("El resultado de la conversión debe ser: ",
                             returnSoapServiceResponse(),
@@ -96,7 +96,7 @@ public class ConvertStepDefinition extends TempConvertSetup {
         try {
             convertion.setResult(message);
             actor.should(
-                    seeThatResponse("El código de respuesta HTTP debe ser: ",
+                    seeThatResponse("El código de respuesta HTTP debe ser: " + HttpStatus.SC_OK,
                             response -> response.statusCode(HttpStatus.SC_OK)),
                     seeThat("El mensaje de la conversión debe ser: ",
                             returnSoapServiceResponse(),
