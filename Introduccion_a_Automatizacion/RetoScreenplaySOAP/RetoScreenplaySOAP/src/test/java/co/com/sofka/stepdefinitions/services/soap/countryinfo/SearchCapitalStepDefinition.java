@@ -55,7 +55,7 @@ public class SearchCapitalStepDefinition extends CountryInfoSetup {
         try {
             capitalCity.setCapitalCity(capital);
             actor.should(
-                    seeThatResponse("El código de respuesta HTTP debe ser: ",
+                    seeThatResponse("El código de respuesta HTTP debe ser: " + HttpStatus.SC_OK,
                             response -> response.statusCode(HttpStatus.SC_OK)),
                     seeThat("El resultado de la consulta debe ser: ",
                             returnSoapServiceResponse(),
@@ -88,8 +88,8 @@ public class SearchCapitalStepDefinition extends CountryInfoSetup {
         try {
             capitalCity.setCapitalCity(message);
             actor.should(
-                    seeThatResponse("El código de respuesta HTTP debe ser: ",
-                            response -> response.statusCode(HttpStatus.SC_OK)),
+                    seeThatResponse("El código de respuesta HTTP debe ser: " + HttpStatus.SC_OK,
+                            response ->  response.statusCode(HttpStatus.SC_OK)),
                     seeThat("El resultado de la consulta debe ser: ",
                             returnSoapServiceResponse(),
                             containsString(bodyResponse()))
