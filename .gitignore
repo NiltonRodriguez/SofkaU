@@ -32,12 +32,14 @@ hs_err_pid*
 */RetoScreenplayGUI/.gradle
 */RetoScreenplayREST/.gradle
 */RetoScreenplaySOAP/.gradle
+*/RetoFrameworkSofka/.gradle
 */RetoPageFactory/RetoPageFactory/.gradle
 */RetoPOM/RetoPOM/.gradle
 */RetoRestAssured/RetoRestAssured/.gradle
 */RetoScreenplayGUI/RetoScreenplayGUI/.gradle
 */RetoScreenplayREST/RetoScreenplayREST/.gradle
 */RetoScreenplaySOAP/RetoScreenplaySOAP/.gradle
+*/RetoFrameworkSofka/RetoFrameworkSofka/.gradle
 
 #Intellij
 */.idea/
@@ -47,12 +49,14 @@ hs_err_pid*
 */RetoScreenplayGUI/.idea/
 */RetoScreenplayREST/.idea/
 */RetoScreenplaySOAP/.idea/
+*/RetoFrameworkSofka/.idea/
 */RetoPageFactory/RetoPageFactory/.idea/
 */RetoPOM/RetoPOM/.idea/
 */RetoRestAssured/RetoRestAssured/.idea/
 */RetoScreenplayGUI/RetoScreenplayGUI/.idea/
 */RetoScreenplayREST/RetoScreenplayREST/.idea/
 */RetoScreenplaySOAP/RetoScreenplaySOAP/.idea/
+*/RetoFrameworkSofka/RetoFrameworkSofka/.idea/
 
 #Java
 */build/
@@ -62,12 +66,14 @@ hs_err_pid*
 */RetoScreenplayGUI/build/
 */RetoScreenplayREST/build/
 */RetoScreenplaySOAP/build/
+*/RetoFrameworkSofka/build/
 */RetoPageFactory/RetoPageFactory/build/
 */RetoPOM/RetoPOM/build/
 */RetoRestAssured/RetoRestAssured/build/
 */RetoScreenplayGUI/RetoScreenplayGUI/build/
 */RetoScreenplayREST/RetoScreenplayREST/build/
 */RetoScreenplaySOAP/RetoScreenplaySOAP/build/
+*/RetoFrameworkSofka/RetoFrameworkSofka/build/
 
 */out/
 */RetoPageFactory/out/
@@ -76,12 +82,14 @@ hs_err_pid*
 */RetoScreenplayGUI/out/
 */RetoScreenplayREST/out/
 */RetoScreenplaySOAP/out/
+*/RetoFrameworkSofka/out/
 */RetoPageFactory/RetoPageFactory/out/
 */RetoPOM/RetoPOM/out/
 */RetoRestAssured/RetoRestAssured/out/
 */RetoScreenplayGUI/RetoScreenplayGUI/out/
 */RetoScreenplayREST/RetoScreenplayREST/out/
 */RetoScreenplaySOAP/RetoScreenplaySOAP/out/
+*/RetoFrameworkSofka/RetoFrameworkSofka/out/
 
 
 */history/
@@ -91,12 +99,14 @@ hs_err_pid*
 */RetoScreenplayGUI/history/
 */RetoScreenplayREST/history/
 */RetoScreenplaySOAP/history/
+*/RetoFrameworkSofka/history/
 */RetoPageFactory/RetoPageFactory/history/
 */RetoPOM/RetoPOM/history/
 */RetoRestAssured/RetoRestAssured/history/
 */RetoScreenplayGUI/RetoScreenplayGUI/history/
 */RetoScreenplayREST/RetoScreenplayREST/history/
 */RetoScreenplaySOAP/RetoScreenplaySOAP/history/
+*/RetoFrameworkSofka/RetoFrameworkSofka/history/
 
 #Serenity
 */target/
@@ -106,6 +116,7 @@ hs_err_pid*
 */RetoScreenplayGUI/target/
 */RetoScreenplayREST/target/
 */RetoScreenplaySOAP/target/
+*/RetoFrameworkSofka/target/
 */RetoPageFactory/RetoPageFactory/target/
 */RetoPOM/RetoPOM/target/
 */RetoRestAssured/RetoRestAssured/target/

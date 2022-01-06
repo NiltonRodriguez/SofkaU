@@ -1,2 +1,2 @@
 # SofkaU
-SofkaU QA Teining League
+SofkaU QA Training League
